@@ -111,6 +111,10 @@
 				answer={'Within LASER we mainly work to develop skills outside of the typically taught curriculum through projects, in addition we offer a range of FYP for third year EEE students.'}
 			/>
 			<Faq
+				question={'What competitions do you take part in?'}
+				answer={'We take part in a range of student engineering and space competitions, including rocketry, rover and cubesats.'}
+			/>
+			<Faq
 				question={'I lack technical skills/knowledge, can I still take part?'}
 				answer={'We encourage anyone regardless of course and background with an interest to join, as our projects often cover a wide range of fields.'}
 			/>
