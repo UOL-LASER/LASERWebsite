@@ -1,0 +1,170 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": ".*",
+			"continue": true,
+			"transforms": [
+				{
+					"type": "request.query",
+					"op": "delete",
+					"target": {
+						"key": "__pathname"
+					}
+				}
+			]
+		},
+		{
+			"src": "/about",
+			"dest": "/about/"
+		},
+		{
+			"src": "/about/",
+			"status": 308,
+			"headers": {
+				"Location": "/about"
+			}
+		},
+		{
+			"src": "/competitions",
+			"dest": "/competitions/"
+		},
+		{
+			"src": "/competitions/",
+			"status": 308,
+			"headers": {
+				"Location": "/competitions"
+			}
+		},
+		{
+			"src": "/contact",
+			"dest": "/contact/"
+		},
+		{
+			"src": "/contact/",
+			"status": 308,
+			"headers": {
+				"Location": "/contact"
+			}
+		},
+		{
+			"src": "/news",
+			"dest": "/news/"
+		},
+		{
+			"src": "/news/",
+			"status": 308,
+			"headers": {
+				"Location": "/news"
+			}
+		},
+		{
+			"src": "/projects",
+			"dest": "/projects/"
+		},
+		{
+			"src": "/projects/",
+			"status": 308,
+			"headers": {
+				"Location": "/projects"
+			}
+		},
+		{
+			"src": "/projects/cubesat",
+			"dest": "/projects/cubesat/"
+		},
+		{
+			"src": "/projects/cubesat/",
+			"status": 308,
+			"headers": {
+				"Location": "/projects/cubesat"
+			}
+		},
+		{
+			"src": "/projects/rocketry",
+			"dest": "/projects/rocketry/"
+		},
+		{
+			"src": "/projects/rocketry/",
+			"status": 308,
+			"headers": {
+				"Location": "/projects/rocketry"
+			}
+		},
+		{
+			"src": "/projects/rover",
+			"dest": "/projects/rover/"
+		},
+		{
+			"src": "/projects/rover/",
+			"status": 308,
+			"headers": {
+				"Location": "/projects/rover"
+			}
+		},
+		{
+			"src": "/resources",
+			"dest": "/resources/"
+		},
+		{
+			"src": "/resources/",
+			"status": 308,
+			"headers": {
+				"Location": "/resources"
+			}
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"headers": {
+				"cache-control": "public, immutable, max-age=31536000"
+			}
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"status": 404,
+			"headers": {
+				"cache-control": "no-store"
+			},
+			"continue": false
+		},
+		{
+			"src": "/.*",
+			"dest": "/![-]/catchall"
+		}
+	],
+	"overrides": {
+		"index.html": {
+			"path": ""
+		},
+		"about.html": {
+			"path": "about"
+		},
+		"competitions.html": {
+			"path": "competitions"
+		},
+		"contact.html": {
+			"path": "contact"
+		},
+		"news.html": {
+			"path": "news"
+		},
+		"projects.html": {
+			"path": "projects"
+		},
+		"projects/cubesat.html": {
+			"path": "projects/cubesat"
+		},
+		"projects/rocketry.html": {
+			"path": "projects/rocketry"
+		},
+		"projects/rover.html": {
+			"path": "projects/rover"
+		},
+		"resources.html": {
+			"path": "resources"
+		}
+	}
+}

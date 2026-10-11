@@ -52,6 +52,7 @@
 				<a href="/">Home</a>
 				<a href="/about">About us</a>
 				<a href="/projects">Projects</a>
+				<a href="/news">News</a>
 				<a href="/resources">Resources</a>
 				<a href="/contact">Contact us</a>
 				<a href="https://github.com/UOL-LASER">GitHub</a>

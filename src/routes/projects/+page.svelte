@@ -7,6 +7,10 @@
 	import '@fontsource-variable/orbitron';
 </script>
 
+<svelte:head>
+	<title>Projects | LASER</title>
+</svelte:head>
+
 <div class="body">
 	<div class="wip">
 		<img src={logo} alt="LASER Logo" />

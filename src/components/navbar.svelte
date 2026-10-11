@@ -42,6 +42,9 @@
 				<a class="nav-link" href="/projects" rel="prefetch">Projects</a>
 			</li>
 			<li>
+				<a class="nav-link" href="/news" rel="prefetch">News</a>
+			</li>
+			<li>
 				<a class="nav-link" href="/resources" rel="prefetch">Resources</a>
 			</li>
 			<li>
@@ -73,6 +76,9 @@
 					</li>
 					<li>
 						<a href="/projects" on:click={closeMenu}>Projects</a>
+					</li>
+					<li>
+						<a href="/news" on:click={closeMenu}>News</a>
 					</li>
 					<li>
 						<a href="/resources" on:click={closeMenu}>Resources</a>

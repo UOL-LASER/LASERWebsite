@@ -65,6 +65,10 @@
 
 </script>
 
+<svelte:head>
+	<title>About | LASER</title>
+</svelte:head>
+
 <div class="body">
 	<div class="header">
 		<h1>About us</h1>
