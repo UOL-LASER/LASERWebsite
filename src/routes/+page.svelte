@@ -10,7 +10,10 @@
 
 	import Getinvolved from '../components/index/getinvolved.svelte';
 	import Faq from '../components/index/faq.svelte';
-	import Galleryitem from '../components/newsletter/galleryitem.svelte';
+	import laserLogo from '$lib/assets/logo2.png';
+	import societyPhoto from '$lib/assets/society_photo.jpg';
+	import karlLab from '$lib/assets/karl_lab.jpg';
+	import rocketLaunch from '$lib/assets/rocket_launch.png';
 
 	function scrollToProjects() {
 		const projectsHeader = document.getElementById('projects-header');
@@ -38,8 +41,52 @@
 		</div>
 	</div>
 	<div class="content-row" id="projects-header">
-		<div class="gallery-container">
-			<Galleryitem url="/assets/newsletter/week20/week20.png" />
+		<div class="society-intro">
+			<div class="section-label">01 / LASER</div>
+			<h1>Design, Build, Learn.</h1>
+			<p>
+				LASER is a student-run engineering society where people from every background can work
+				together on ambitious projects, learn practical skills and make friends along the way.
+			</p>
+			<div class="society-showcase">
+				<img class="society-logo" src={laserLogo} alt="LASER society logo" />
+				<img class="society-photo" src={societyPhoto} alt="LASER society members together" />
+			</div>
+		</div>
+	</div>
+	<div class="content-row lab-row">
+		<div class="feature-grid">
+			<div class="feature-copy">
+				<div class="section-label">02 / OUR SPACE</div>
+				<h1>Our private lab space</h1>
+				<p>
+					Our private lab is a place to study, collaborate and turn ideas into working hardware. It
+					includes dedicated study space, 3D printers for rapid prototyping and a soldering station
+					for electronics work.
+				</p>
+			</div>
+			<img
+				class="feature-photo"
+				src={karlLab}
+				alt="Karl working at the LASER lab soldering station"
+			/>
+		</div>
+	</div>
+	<div class="content-row rockets-row">
+		<div class="rockets">
+			<div class="section-label">03 / COMPETITIONS</div>
+			<h1>Our rocketry team</h1>
+			<p>
+				We compete in the UKSEDS National Rocketry Championship and Exotopic Mach-X Competition. In
+				2026, we won the UKSEDS National Rocketry Championship with additional awards for "Best
+				Rideshare Payload" and the "Public Engagement Award".
+			</p>
+			<div class="rocket-gallery">
+				<figure>
+					<img class="launch-photo" src={rocketLaunch} alt="A LASER rocket launching" />
+					<figcaption>Launching PULSAR.</figcaption>
+				</figure>
+			</div>
 		</div>
 	</div>
 	<div class="content-row">
@@ -86,21 +133,6 @@
 		margin: 0;
 		padding: 0;
 		min-height: 100vh;
-	}
-
-	.gallery-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-		gap: 20px;
-		padding: 20px;
-		margin: 20px auto;
-		background-color: #ffffff;
-	}
-
-	.gallery-container:has(.gallery-item:nth-child(1):only-child) {
-		justify-content: center;
-		max-width: 600px;
-		margin: 0 auto;
 	}
 
 	.header {
@@ -162,8 +194,11 @@
 		padding: 20px;
 		background-color: #ffffff;
 		color: #000000;
-		border-top: 1px solid rgb(255, 255, 255);
-		margin: 10px auto;
+		margin: 0 auto;
+	}
+
+	.content-row:nth-of-type(odd) {
+		background-color: #f1f1f1;
 	}
 
 	.container {
@@ -191,6 +226,125 @@
 		margin: 10px auto;
 	}
 
+	.society-intro,
+	.feature-grid,
+	.rockets {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.society-intro {
+		padding: 30px 20px;
+	}
+
+	.section-label {
+		color: #58a6ff;
+		font-family: 'Orbitron Variable', sans-serif;
+		font-size: 0.8rem;
+		letter-spacing: 0.12em;
+		text-align: center;
+	}
+
+	.society-intro h1,
+	.feature-copy h1,
+	.rockets h1 {
+		margin: 12px auto;
+	}
+
+	.society-intro p,
+	.rockets > p {
+		max-width: 760px;
+	}
+
+	.society-photo {
+		display: block;
+		min-width: 0;
+		width: 100%;
+		max-height: 620px;
+		border-radius: 10px;
+		object-fit: cover;
+	}
+
+	.society-showcase {
+		display: grid;
+		grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.5fr);
+		align-items: center;
+		gap: 55px;
+		margin-top: 30px;
+	}
+
+	.society-logo {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.feature-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: 60px;
+		padding: 50px 20px;
+	}
+
+	.feature-copy h1 {
+		text-align: left;
+	}
+
+	.feature-copy .section-label {
+		text-align: left;
+	}
+
+	.feature-copy p {
+		padding: 0;
+		text-align: left;
+	}
+
+	.feature-photo {
+		display: block;
+		width: min(65%, 360px);
+		justify-self: center;
+		border-radius: 10px;
+	}
+
+	.rockets {
+		padding: 50px 20px;
+	}
+
+	.rocket-gallery {
+		display: flex;
+		justify-content: center;
+		margin-top: 30px;
+	}
+
+	.rocket-gallery figure {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+	}
+
+	.rocket-gallery img {
+		display: block;
+		height: 360px;
+		margin: 0 auto;
+		border-radius: 10px;
+		object-fit: cover;
+	}
+
+	.rocket-gallery .launch-photo {
+		width: min(100%, 1000px);
+		height: 580px;
+		margin: 0 auto;
+		border-radius: 16px;
+		object-fit: cover;
+	}
+
+	.rocket-gallery figcaption {
+		padding-top: 12px;
+		font-family: 'Orbitron Variable', sans-serif;
+		font-size: 0.85rem;
+	}
+
 	.separator {
 		content: '';
 		display: block;
@@ -199,16 +353,6 @@
 		border-radius: 1px;
 		width: 80%;
 		margin: 20px auto;
-	}
-
-	.gallery-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-		gap: 20px;
-		padding: 20px;
-		margin: 20px auto;
-		background-color: #f1f1f1;
-		border-radius: 10px;
 	}
 
 	@media (max-width: 768px) {
@@ -241,8 +385,34 @@
 			margin: 0 auto;
 		}
 
-		.gallery-container {
-			gap: 10px;
+		.feature-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.society-showcase {
+			grid-template-columns: 1fr;
+		}
+
+		.society-logo {
+			width: min(240px, 70%);
+			margin: 0 auto;
+		}
+
+		.feature-grid {
+			gap: 30px;
+		}
+
+		.feature-photo {
+			width: min(60%, 280px);
+		}
+
+		.rocket-gallery img {
+			height: auto;
+		}
+
+		.rocket-gallery .launch-photo {
+			width: 90%;
+			height: 400px;
 		}
 	}
 </style>
