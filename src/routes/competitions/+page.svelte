@@ -1,6 +1,9 @@
 <script lang="ts">
 	import unityRiseLogo from '$lib/assets/UR_Logo_Eye.png';
+	import roverLogo from '$lib/assets/rover_logo.jpg';
 	import roverImage from '$lib/assets/rover.png';
+	import spiderImage from '$lib/assets/spider.png';
+	import roverTeamImage from '$lib/assets/rover_team.png';
 	import gallery5 from '$lib/assets/gallery5.jpg';
 	import gallery6 from '$lib/assets/gallery6.jpg';
 	import gallery9 from '$lib/assets/gallery9.jpg';
@@ -52,9 +55,14 @@
 				</div>
 				<div class="section-details">
 					<div class="photo-space">
-						<img src={roverImage} alt="LASER rover" />
+						<img src={roverLogo} alt="LASER rover" />
 					</div>
 					<p>The LASER rover competition team competes in the UKSEDS Olympus Rover Trials (ORT).</p>
+				</div>
+				<div class="photo-gallery rover-gallery" aria-label="Rover photo gallery">
+					<div class="photo-space"><img src={roverImage} alt="LASER rover prototype" /></div>
+					<div class="photo-space"><img src={spiderImage} alt="LASER rover mechanism" /></div>
+					<div class="photo-space"><img src={roverTeamImage} alt="LASER rover team" /></div>
 				</div>
 			</div>
 		</section>
@@ -82,11 +90,11 @@
 	.section-details a { display: inline-block; margin-top: 8px; padding: 12px 16px; color: #fff; background: #111; text-decoration: none; }
 	.section-details a:hover, .section-details a:focus-visible { background: #58a6ff; }
 	.photo-space { display: grid; place-items: center; min-height: 260px; border: 2px dashed #999; background: #fff; color: #777; }
-	.rover .photo-space { border: 0; border-radius: 12px; background: transparent; overflow: hidden; transition: transform .2s ease; }
-	.rover .photo-space:hover { transform: scale(1.04); }
+	.rover .photo-space { border: 0; border-radius: 12px; background: transparent; overflow: hidden; }
 	.rover .section-details img { width: min(280px, 100%); }
-	.photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding-top: 38px; }
-	.photo-gallery .photo-space { aspect-ratio: 16 / 9; min-height: 0; border: 0; border-radius: 12px; overflow: hidden; transition: transform .2s ease; }
+	.photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 38px; }
+	.photo-gallery .photo-space { aspect-ratio: 16 / 9; min-height: 0; border: 0; border-radius: 12px; overflow: hidden; transition: transform .3s ease; }
+	.rover-gallery .photo-space { background: #fff; }
 	.photo-gallery .photo-space:hover { transform: scale(1.03); }
 	.photo-gallery img { display: block; width: 100%; height: 100%; object-fit: cover; }
 	@media (max-width: 700px) {
