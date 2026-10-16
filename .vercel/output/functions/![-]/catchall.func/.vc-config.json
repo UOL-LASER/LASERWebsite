@@ -1,6 +1,6 @@
 {
 	"runtime": "nodejs24.x",
-	"handler": "..\\..\\..\\..\\..\\..\\Users\\845jw\\Documents\\GitHub\\laser_website\\.svelte-kit\\vercel-tmp\\index.js",
+	"handler": "..\\..\\..\\..\\..\\Users\\sgjwood7\\Documents\\laser_website\\.svelte-kit\\vercel-tmp\\index.js",
 	"launcherType": "Nodejs",
 	"experimentalResponseStreaming": true,
 	"framework": {
