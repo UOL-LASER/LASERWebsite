@@ -34,7 +34,7 @@
 			<h2>Get involved</h2>
 			<p class="route-intro">Weekly meetings:</p>
 			<div class="meeting">
-				<strong>Tuesdays - 17:00</strong>
+				<strong>Fridays - 17:00</strong>
 				<span>502 Building, Flexible learning space 2 (1st floor).</span>
 			</div>
 			<p class="note">(Check Instagram for confirmation meeting is going ahead on the day).</p>
