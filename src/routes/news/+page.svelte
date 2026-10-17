@@ -25,20 +25,28 @@
 		}
 	];
 
-	const newsletters = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10].map((week) => ({
-		week,
-		cover: `/assets/newsletter/2024_25/2024_25_week${week}/2024_25_week${week}.png`,
-		pdf: `/assets/newsletter/2024_25/2024_25_week${week}/2024_25_week${week}.pdf`
-	}));
+	const newsletterWeeks2024_25 = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10];
+	const newsletterWeeks2026_27 = [1];
+
+	function createNewsletters(academicYear: string, weeks: number[]) {
+		return weeks.map((week) => ({
+			week,
+			cover: `/assets/newsletter/${academicYear}/${academicYear}_week${week}/${academicYear}_week${week}.png`,
+			pdf: `/assets/newsletter/${academicYear}/${academicYear}_week${week}/${academicYear}_week${week}.pdf`
+		}));
+	}
+
+	const newsletters2024_25 = createNewsletters('2024_25', newsletterWeeks2024_25);
+	const newsletters2026_27 = createNewsletters('2026_27', newsletterWeeks2026_27);
 
 	const newsletterYears = [
 		{
 			label: '2026–27',
-			newsletters: []
+			newsletters: newsletters2026_27
 		},
 		{
 			label: '2024–25',
-			newsletters
+			newsletters: newsletters2024_25
 		}
 	];
 </script>
