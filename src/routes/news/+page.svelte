@@ -33,6 +33,10 @@
 
 	const newsletterYears = [
 		{
+			label: '2026–27',
+			newsletters: []
+		},
+		{
 			label: '2024–25',
 			newsletters
 		}
