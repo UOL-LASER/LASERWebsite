@@ -49,6 +49,24 @@
 			newsletters: newsletters2024_25
 		}
 	];
+
+	let openNewsletter: { week: number; pdf: string } | null = null;
+
+	function closeNewsletter() {
+		openNewsletter = null;
+	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape') {
+			closeNewsletter();
+		}
+	}
+
+	function handleBackdropClick(event: MouseEvent) {
+		if (event.target === event.currentTarget) {
+			closeNewsletter();
+		}
+	}
 </script>
 
 <svelte:head>
@@ -94,16 +112,15 @@
 						</summary>
 						<div class="newsletter-grid">
 							{#each year.newsletters as newsletter}
-								<a
+								<button
 									class="newsletter-card"
-									href={newsletter.pdf}
-									target="_blank"
-									rel="noreferrer"
-									aria-label={`Open LASER newsletter week ${newsletter.week} PDF`}
+									type="button"
+									on:click={() => (openNewsletter = newsletter)}
+									aria-label={`Open LASER newsletter week ${newsletter.week} PDF in a popup`}
 								>
 									<img src={newsletter.cover} alt={`LASER newsletter week ${newsletter.week} cover`} />
 									<span>Week {newsletter.week} <span aria-hidden="true">↗</span></span>
-								</a>
+								</button>
 							{/each}
 						</div>
 					</details>
@@ -113,12 +130,28 @@
 	</main>
 </div>
 
+<svelte:window on:keydown={handleKeydown} />
+
+{#if openNewsletter}
+	<div class="modal-backdrop" role="presentation" on:click={handleBackdropClick}>
+		<div class="modal" role="dialog" aria-modal="true" aria-label={`LASER newsletter week ${openNewsletter.week}`}>
+			<div class="modal-header">
+				<h2>Newsletter Week {openNewsletter.week}</h2>
+				<button class="close-button" type="button" aria-label="Close newsletter" on:click={closeNewsletter}>×</button>
+			</div>
+			<iframe
+				title={`LASER newsletter week ${openNewsletter.week}`}
+				src={openNewsletter.pdf}
+			></iframe>
+		</div>
+	</div>
+{/if}
+
 <style>
 	:global(*) { box-sizing: border-box; }
 	.page { background: #fff; color: #111; font-family: 'Exo 2 Variable', sans-serif; }
 	.page-header { padding: 130px 24px 90px; color: #fff; text-align: center; background: url('/src/lib/assets/background-2.jpg') center 35% / cover no-repeat; }
-	.eyebrow, .section-number { color: #58a6ff; font-family: 'Orbitron Variable', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
-	.eyebrow { margin: 0; font-size: .8rem; }
+	.section-number { color: #58a6ff; font-family: 'Orbitron Variable', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
 	.page-header h1 { margin: 16px 0 12px; font-family: 'Orbitron Variable', sans-serif; font-size: clamp(2.5rem, 7vw, 5rem); }
 	.page-header > p:last-child { margin: 0; font-size: 1.1rem; }
 	.content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(40px, 7vw, 110px); max-width: 1250px; margin: 0 auto; padding: 80px 24px 110px; }
@@ -140,10 +173,17 @@
 	.newsletter-count { margin-left: auto; color: #666; font-family: 'Exo 2 Variable', sans-serif; font-size: .9rem; }
 	.year-folder > .newsletter-grid { padding: 0 20px 22px; }
 	.newsletter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-	.newsletter-card { color: #111; text-decoration: none; }
+	.newsletter-card { display: block; width: 100%; padding: 0; color: #111; border: 0; background: transparent; font: inherit; text-align: left; cursor: pointer; }
 	.newsletter-card img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border: 1px solid #d4d4d4; box-shadow: 0 4px 12px rgba(0, 0, 0, .12); transition: transform .2s ease, box-shadow .2s ease; }
 	.newsletter-card span { display: block; padding-top: 10px; font-family: 'Orbitron Variable', sans-serif; font-size: .85rem; }
 	.newsletter-card:hover img, .newsletter-card:focus-visible img { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0, 0, 0, .2); }
+	.modal-backdrop { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 3vh 3vw; background: rgba(0, 0, 0, .8); }
+	.modal { display: flex; flex-direction: column; width: min(1100px, 100%); height: min(90vh, 900px); overflow: hidden; background: #fff; border-radius: 6px; box-shadow: 0 10px 40px rgba(0, 0, 0, .45); }
+	.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; color: #fff; background: #111; }
+	.modal-header h2 { margin: 0; font-family: 'Orbitron Variable', sans-serif; font-size: 1.1rem; }
+	.close-button { padding: 0 8px; color: #fff; border: 0; background: transparent; font-size: 2rem; line-height: 1; cursor: pointer; }
+	.close-button:focus-visible { outline: 2px solid #58a6ff; }
+	.modal iframe { width: 100%; flex: 1; border: 0; }
 	@media (max-width: 800px) {
 		.content { grid-template-columns: 1fr; padding-top: 60px; }
 	}
