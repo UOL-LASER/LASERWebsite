@@ -27,8 +27,8 @@
 
 	const newsletters = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10].map((week) => ({
 		week,
-		cover: `/assets/newsletter/week${week}/week${week}.png`,
-		pdf: `/assets/newsletter/week${week}/week${week}.pdf`
+		cover: `/assets/newsletter/2024_25/2024_25_week${week}/2024_25_week${week}.png`,
+		pdf: `/assets/newsletter/2024_25/2024_25_week${week}/2024_25_week${week}.pdf`
 	}));
 
 	const newsletterYears = [
